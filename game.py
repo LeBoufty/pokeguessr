@@ -15,6 +15,9 @@ def get_random_number() -> int:
 def get_name(n) -> str:
     return pokedex[n]['name']
 
+def get_image(n) -> str:
+    return f"https://assets.pokemon.com/assets/cms2/img/pokedex/full/{n+1}.png"
+
 def get_index(pokemon) -> int:
     i = 0
     while i < len(pokedex) and pokedex[i]['name'] != pokemon: i += 1

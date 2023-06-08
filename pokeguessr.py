@@ -1,5 +1,5 @@
 import discord
-from game import Game, get_random_number
+from game import Game, get_random_number, get_image
 
 try:
     intents = discord.Intents.default()
@@ -29,7 +29,8 @@ async def on_message(message:discord.Message):
             game: Game = games[player]
             pokemon = message.content.split(' ')[1].lower()
             if game.guess(pokemon):
-                await message.reply(f'Congratulations ! You found {pokemon.capitalize()}.')
+                image = get_image(game.pokemon)
+                await message.reply(f'Congratulations ! You found {pokemon.capitalize()}.\n{image}')
                 game.over = True
             else:
                 await message.reply(game.next_round())
