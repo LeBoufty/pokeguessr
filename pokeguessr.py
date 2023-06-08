@@ -1,8 +1,11 @@
 import discord
 from game import Game, get_random_number
 
-intents = discord.Intents.default()
-intents.message_content = True
+try:
+    intents = discord.Intents.default()
+    intents.message_content = True
+except AttributeError:
+    intents.messages = True
 token = open('token', 'r').read()
 
 client = discord.Client(intents=intents)
